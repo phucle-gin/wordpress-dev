@@ -1,0 +1,66 @@
+/* SASS Vars */
+$screen-xl: 1340px;
+$screen-lg-max: $screen-xl - 1;
+$screen-lg: 1200px;
+$screen-md-max: $screen-lg - 1;
+$screen-md: 992px;
+$screen-sm-max: $screen-md - 1;
+$screen-sm: 768px;
+$screen-xs-max: $screen-sm - 1;
+$screen-xs: 650px;
+$screen-xxs-max: $screen-xs - 1;
+$screen-xxs: 360px;
+$screen-xxxs-max: $screen-xxs - 1;
+
+$font-futura: 'FuturaMaxi', sans-serif;
+$font-tradegothic:'TradeGothicCond', sans-serif;
+
+$fw-bold:800;
+$fw-demi:600;
+$fw-book:500;
+$fw-regular:400;
+$fw-light:200;
+
+$fs-basepx:14;
+
+$border-radius:25px;
+
+$label-weight:$fw-light;
+$input-width:100%;
+$input-height:50px;
+
+$header-lineheight:54px;
+
+$clr-lightgreen:#75EE58;
+$clr-lightgreen-2:#00ab4f;
+$clr-green:#00AA4E;
+$clr-green-1: #00AA56;
+$clr-green-2: #225441;
+$clr-darkgreen:#00553F;
+$clr-darkgreen-2:#205541;
+$clr-darkgreen-3:#2F441D;
+$clr-darkgreen-4: #0a5841;
+$clr-darkgreen-5:#005541;
+$clr-darkgreen-6: #225441;
+
+$clr-black:#000000;
+$clr-charcoal:#232323;
+$clr-darkgrey:#505050;
+$clr-darkgrey-02:#333333;
+$clr-grey:#787878;
+$clr-warmgrey:#BCB6AB;
+$clr-lightgrey:#F0F0F0;
+$clr-lightgrey-02:#F2F2F2;
+$clr-lightgrey-1: #EBECF0;
+$clr-lightgrey-2: #E3E3E7;
+$clr-white:#FFFFFF;
+
+$clr-lightblue:#79CBE9;
+$clr-midblue:#006DAE;
+
+$clr-yellow: #f5d010;
+
+$clr-orange: #f89c27;
+$clr-orange-02: #F8A33C;
+
+$clr-pink:#FAD3B9;

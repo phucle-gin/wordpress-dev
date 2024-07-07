@@ -1,0 +1,152 @@
+.layout-switcher{
+    a{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        background: #edf5f7;
+        color: #999;
+        text-align: center;
+        transition: all .4s;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        margin-right: 10px;
+    }
+}
+.sort-by{
+    width: 50%;
+    float: right;
+}
+
+.movie-listing{
+    .movie-box-3{
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 10px 10px 40px 0 rgba(52, 58, 64, .1);
+        transition: all .3s ease;
+        .listing-container{
+            .listing-image{
+                height: 100%;
+                overflow: hidden;
+                position: relative;
+                img{
+                    display: block;
+                    max-height: 350px;
+                    width: 100%;
+                }
+            }
+            .listing-content{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                position: relative;
+                padding: 30px;
+                .inner{
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 250px;
+                    justify-content: space-between;
+                }
+                .play-btn{
+                    position: absolute;
+                    top: -30px;
+                    right: 30px;
+                    .play-video{
+                        position: relative;
+                        display: block;
+                        box-shadow: 0 10px 30px 0 rgba(147, 82, 179, .7);
+                        height: 60px;
+                        width: 60px;
+                        line-height: 60px;
+                        color: #fff;
+                        border-radius: 50%;
+                        z-index: 10;
+                        transition: all .5s ease;
+                        background: #9352b3;
+                        text-align: center;
+                        i{
+                            margin-left: 4px;
+                            color: inherit;
+                        }
+                    }
+
+                }
+                .title{
+                    padding: 0;
+                    font-size: 1.5em;
+                    font-weight: 500;
+                }
+                .stars{
+                    font-size: 14px;
+                    padding: 10px 0;
+                    clear: both;
+                    .rating{
+                        i{
+                            color: #ffc741;
+                        }
+                        span{
+                            color: #999;
+                        }
+                        .category{
+                            float: right;
+                        }
+                    }
+          
+                }
+                a{
+                    width: 85px;
+                }
+            }
+        }
+        &:hover{
+            transform: translateY(-10px);
+        }
+    }
+}
+.pagination{
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+    overflow: hidden;
+    ul{
+        cursor: pointer;
+        padding: 0;
+        list-style-type: none;
+        li{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 0 5px 0 0;
+            padding: 0;
+            border-radius: 50%;
+
+            &:hover {
+                background: #e7edef;
+                color: #9352b3;
+            }
+            a, span{
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 50px;
+                border-radius: 50%;
+                
+            }
+        }
+        .active, .current{
+            background: #9352b3;
+            color: #fff;
+        }
+    }
+}
