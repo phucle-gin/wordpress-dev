@@ -1,107 +1,85 @@
 Martin's Movies WordPress Setup
 
-### Getting Started
+## Getting Started
 Clone the Repository
 
 
 git clone <repository_url>
 cd martins-movies
-	
-### Set Up WordPress
 
-### Create a new database for WordPress.
+## Create a new database for WordPress.
 
 Rename wp-config-sample.php to wp-config.php.
 
 Update wp-config.php with your database credentials:
 
-```bash
+
 define( 'DB_NAME', 'your_database_name' );
 define( 'DB_USER', 'your_database_user' );
 define( 'DB_PASSWORD', 'your_database_password' );
 define( 'DB_HOST', 'localhost' );
-```
 
-Install Dependencies:
+
+## Install Dependencies:
 
 If using Composer or npm for managing dependencies, install them:
 
-```bash
+
 composer install  # For Composer
 npm install       # For npm
-```
-### Configure Environment:
+
+## Configure Environment:
 	
-	Configure Apache or Nginx to serve the WordPress site. Set the document root to the martins-movies directory.
+- Configure Apache or Nginx to serve the WordPress site. Set the document root to the martins-movies directory. Set up a folder for the new project in the /var/www directory. To do that through CLI, open terminal and type:
+
+cd /var/www
+sudo mkdir example
+
+Where ‘example’ is the project name. Then do:
+
+	sudo chown $USER:$USER example
+	cd example
+	mkdir logs
+	git clone <SSH_URL_FROM_GITHUB_FOR_THE_PROJECT> public_html
+
+The full path of this dir should be ‘/var/www/example/public_html’.
+- Create a virtual host file:
+	From terminal type:
+	cd /etc/apache2/sites-available
+	sudo touch example.local.conf
+	sudo gedit example.local.conf
+	
+	<VirtualHost *:80>
+	
+	    ServerName example.local
+	    ServerAlias www.example.local
+	    ServerAdmin webmaster@example.local
+	    DocumentRoot /var/www/example/public_html
+	
+	    <Directory /var/www/example/public_html>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Order allow,deny
+		allow from all
+	    </Directory>
+	
+	    <FilesMatch \.php$>
+		# From the Apache version 2.4.10 and above, use the SetHandler to run PHP as a fastCGI process server, you can choose your preferred version 
+		#SetHandler "proxy:unix:/run/php/php5.6-fpm.sock|fcgi://localhost"
+		#SetHandler "proxy:unix:/run/php/php7.0-fpm.sock|fcgi://localhost"
+		#SetHandler "proxy:unix:/run/php/php7.2-fpm.sock|fcgi://localhost"
+		SetHandler "proxy:unix:/run/php/php7.4-fpm.sock|fcgi://localhost"
+		#SetHandler "proxy:unix:/run/php/php8.0-fpm.sock|fcgi://localhost"
+	<VirtualHost>
+
+- From terminal activate the virtual host file:
+sudo a2ensite example.local
 		
-	Set up a folder for the new project in the /var/www directory. To do that through CLI, open terminal and type:
+- Configure your hosts file: 
+	sudo nano /etc/hosts
+	Add 127.0.0.1 example.local
 
-    ```bash
-    cd /var/www
-    sudo mkdir example
-    ```
-
-    Where ‘example’ is the project name. Then do:
-
-    ```bash
-    sudo chown $USER:$USER example
-    cd example
-    mkdir logs
-    ```    
-
-    ```bash
-    git clone <SSH_URL_FROM_GITHUB_FOR_THE_PROJECT> public_html
-    ```
-
-    The full path of this dir should be ‘/var/www/example/public_html’.
-
-	Create a virtual host file:
-
-    ```bash
-		From terminal type:
-		cd /etc/apache2/sites-available
-		sudo touch example.local.conf
-		sudo gedit example.local.conf
-    ```
-
-    ```bash
-        <VirtualHost *:80>
-        
-            ServerName example.local
-            ServerAlias www.example.local
-            ServerAdmin webmaster@example.local
-            DocumentRoot /var/www/example/public_html
-        
-            <Directory /var/www/example/public_html>
-                Options Indexes FollowSymLinks MultiViews
-                AllowOverride All
-                Order allow,deny
-                allow from all
-            </Directory>
-        
-            <FilesMatch \.php$>
-                # From the Apache version 2.4.10 and above, use the SetHandler to run PHP as a fastCGI process server, you can choose your preferred version 
-                #SetHandler "proxy:unix:/run/php/php5.6-fpm.sock|fcgi://localhost"
-                #SetHandler "proxy:unix:/run/php/php7.0-fpm.sock|fcgi://localhost"
-                #SetHandler "proxy:unix:/run/php/php7.2-fpm.sock|fcgi://localhost"
-                SetHandler "proxy:unix:/run/php/php7.4-fpm.sock|fcgi://localhost"
-                #SetHandler "proxy:unix:/run/php/php8.0-fpm.sock|fcgi://localhost"
-        <VirtualHost>
-    ```
-
-    From terminal activate the virtual host file:
-
-    ```bash
-    sudo a2ensite example.local
-    ```
-
-    ```bash
-    Configure your hosts file: 
-    sudo nano /etc/hosts
-    Add 127.0.0.1 example.local
-	  ```	    
-
-Achieved
+Achieved:
 - [x] Build a new paginated listing page to pull all data
 - [x] Responsiveness and Overall Design
 - [ ] Search Function by Keyword.
@@ -118,8 +96,8 @@ Limitation and Takeouts:
 	Performance Considerations: Use caching (set_transient and get_transient) effectively to reduce API calls and improve application responsiveness.	
 	Security: Ensure nonce validation (check_ajax_referer) in AJAX requests (fetch_movies) to prevent unauthorized access and potential security vulnerabilities.	
 	Scalability: Consider how well the application handles large datasets and traffic spikes. Evaluate if the current pagination and data fetching strategy can scale efficiently.	
-- Final: The current implementation may not be production-ready due to certain limitations. However, it is presented here as a showcase for discussion during a sprint or phase review. Further refinement and optimization are needed before deployment in a production environment.
 
 ### Conclusion
+	The current implementation may not be production-ready due to certain limitations. However, it is presented here as a showcase for discussion during a sprint or phase review. Further refinement and optimization are needed before deployment in a production environment.
 
 While the current implementation serves as a showcase for discussion during a sprint or phase review, it may not be production-ready due to certain limitations. However, with further refinement and optimization, it can be prepared for deployment in a production environment.
